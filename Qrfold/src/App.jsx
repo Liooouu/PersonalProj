@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {QRCodeCanvas} from "qrcode.react";
-import {FiDownload, FiCopy, FiCheck} from "react-icons/fi";
+import {FiDownload, FiCopy, FiCheck, FiX} from "react-icons/fi";
 import {BsQrCode} from "react-icons/bs";
 
 function SimpleQrGenerator() {
@@ -13,7 +13,7 @@ function SimpleQrGenerator() {
     const pngUrl = canvas.toDataURL("image/png").
     replace("image/png", "image/octet-stream");
     const link = document.createElement("a");
-    link.href = pageUrl;
+    link.href = pngUrl;
     link.download = "qr-code.png";
     link.click();
 
@@ -63,6 +63,43 @@ function SimpleQrGenerator() {
               
             }
           </div>
+        </div>
+
+        <div className="flex sm:flex-row flex-col w-full gap-3 mb-2">
+          <button onClick={handleDownload} disabled={!inputText.trim()} className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed transition cursor-pointer">
+            <FiDownload className="w-4 h-4"/>
+            Download
+          </button>
+
+           <button 
+           onClick={handleCopy} 
+           disabled={!inputText.trim()} 
+           className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed transition cursor-pointer"
+           >
+            {
+              copied ? (
+                <FiCheck className="w-4 h-4 text-green-400"/> 
+              ) : (
+                <FiCopy className="w-4 h-4"/>
+              )
+          
+            }
+
+            {
+              copied ? "Copied!" : "Copy"
+            }
+          </button>
+
+          <button 
+          onClick={handleClear} 
+          disabled={!inputText.trim()} 
+          className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed transition cursor-pointer"
+          >
+          <FiX 
+          className="w-4 h-4"
+          />
+          Clear
+          </button>
         </div>
       </div>
     </div>  
