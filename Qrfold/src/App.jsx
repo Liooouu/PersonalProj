@@ -16,8 +16,6 @@ function SimpleQrGenerator() {
     link.href = pngUrl;
     link.download = "qr-code.png";
     link.click();
-
-
   }
 
   const handleCopy = async () => {
@@ -35,40 +33,45 @@ function SimpleQrGenerator() {
 
   }
 
-  
   return (
     <>
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-indigo-300 to-indigo-900">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-black/40 hover:shadow-2xl flex flex-col items-center hover:scale-105 transition-all ease-in-out duration-500">
        <div className="flex flex-col items-center mb-6">
         <div className="w-18 h-18 flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-300 to-indigo-900 mb-2">
-          <BsQrCode className="w-10 h-10 text-white"/>
+        
+        <BsQrCode className="w-10 h-10 text-white"/>
         </div>
-        <h1 className="text-xl font-semibold text-gray-600 mb-1">Qr code generator</h1>
 
+        <h1 className="text-xl font-semibold text-gray-600 mb-1">Qr code generator</h1>
         <p className="text-gray-600 text-sm">Enter text or URL to create a QR code</p>
        </div>
 
-       <textarea value={inputText} onChange={(e) => setInputText(e.target.value)} className="w-full mb-5 px-4 py-3 bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none resize-none text-gray-700 placeholder-gray-400 shadow-sm transition duration-500"/>
+       <textarea 
+       value={inputText} 
+       onChange={(e) => setInputText(e.target.value)} 
+       className="w-full mb-5 px-4 py-3 bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none resize-none text-gray-700 placeholder-gray-400 shadow-sm transition duration-500"
+       />
 
         <div className="mb-5 flex items-center justify-center w-full">
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center p-4 min-h-[200] w-full">
+
             {
-              inputText.trim() ? ( 
-              <QRCodeCanvas value={inputText} 
-              size={200} className="rounded"/> 
-            ) : (
-            <BsQrCode className="w-16 h-16 mb-2 text-gray-300"/>
-            )
-              
+              inputText.trim() ? (<QRCodeCanvas value={inputText} size={200} className="rounded"/> ) : (<BsQrCode className="w-16 h-16 mb-2 text-gray-300"/>)
             }
+            
           </div>
         </div>
 
         <div className="flex sm:flex-row flex-col w-full gap-3 mb-2">
-          <button onClick={handleDownload} disabled={!inputText.trim()} className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed transition cursor-pointer">
-            <FiDownload className="w-4 h-4"/>
-            Download
+
+          <button 
+          onClick={handleDownload} 
+          disabled={!inputText.trim()} 
+          className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed transition cursor-pointer"
+          >
+          <FiDownload className="w-4 h-4"/>
+          Download
           </button>
 
            <button 
@@ -77,12 +80,7 @@ function SimpleQrGenerator() {
            className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed transition cursor-pointer"
            >
             {
-              copied ? (
-                <FiCheck className="w-4 h-4 text-green-400"/> 
-              ) : (
-                <FiCopy className="w-4 h-4"/>
-              )
-          
+              copied ? (<FiCheck className="w-4 h-4 text-green-400"/> ) : (<FiCopy className="w-4 h-4"/>)
             }
 
             {
@@ -100,10 +98,12 @@ function SimpleQrGenerator() {
           />
           Clear
           </button>
+
         </div>
+
       </div>
     </div>  
-    </>
+  </>
   )
 }
 
