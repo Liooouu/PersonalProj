@@ -35,7 +35,7 @@ function SimpleQrGenerator() {
 
   return (
     <>
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-r from-indigo-300 to-indigo-900">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-r from-indigo-200 to-indigo-800">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-black/40 hover:shadow-2xl flex flex-col items-center hover:scale-105 transition-all ease-in-out duration-500">
        <div className="flex flex-col items-center mb-6">
         <div className="w-18 h-18 flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-300 to-indigo-900 mb-2">
